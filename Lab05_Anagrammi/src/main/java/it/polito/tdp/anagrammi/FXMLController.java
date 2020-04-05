@@ -10,10 +10,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ProgressBar;
 
 public class FXMLController {
 	
 	Model model;
+	
+	@FXML
+    private ProgressBar progress;
 
     @FXML
     private ResourceBundle resources;
@@ -35,6 +39,7 @@ public class FXMLController {
 
     @FXML
     private Button btnReset;
+    
 
     @FXML
     void doCalcola(ActionEvent event) {
@@ -62,6 +67,7 @@ public class FXMLController {
 
     @FXML
     void initialize() {
+        assert progress != null : "fx:id=\"progress\" was not injected: check your FXML file 'Scene.fxml'.";
         assert fieldInsert != null : "fx:id=\"fieldInsert\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnCalcola != null : "fx:id=\"btnCalcola\" was not injected: check your FXML file 'Scene.fxml'.";
         assert areaCorretti != null : "fx:id=\"areaCorretti\" was not injected: check your FXML file 'Scene.fxml'.";
