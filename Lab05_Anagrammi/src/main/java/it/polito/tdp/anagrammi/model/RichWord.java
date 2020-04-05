@@ -22,7 +22,7 @@ public class RichWord {
 		for (int i = 0; i < trailing.length; i++) {
 			char newLeading = this.trailing[i];
 			char[] newTrailing = removeElement(this.trailing, i);
-			System.out.println("\nleading: " + newLeading + "\ntrailing: " + new String(newTrailing));
+			// System.out.println("\nleading: " + newLeading + "\ntrailing: " + new String(newTrailing));
 			res.add(new RichWord(newLeading, newTrailing));
 		}
 		return res;

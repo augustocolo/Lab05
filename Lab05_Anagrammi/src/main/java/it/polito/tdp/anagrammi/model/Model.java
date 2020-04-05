@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import it.polito.tdp.anagrammi.DAO.AnagrammiDAO;
+
 public class Model {
+	
+	private AnagrammiDAO adao = new AnagrammiDAO();
 	
 	public List<String> getAnagrammi(String start){
 		RichWord in = new RichWord(" " + start);
@@ -35,5 +39,9 @@ public class Model {
 		// BACKTRACK
 		return out;
 		
+	}
+	
+	public boolean anagrammaCorretto(String word) {
+		return adao.isCorrect(word);
 	}
 }

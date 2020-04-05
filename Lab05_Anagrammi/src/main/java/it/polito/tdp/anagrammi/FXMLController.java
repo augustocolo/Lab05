@@ -1,7 +1,10 @@
 package it.polito.tdp.anagrammi;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import it.polito.tdp.anagrammi.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,6 +12,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class FXMLController {
+	
+	Model model;
 
     @FXML
     private ResourceBundle resources;
@@ -33,12 +38,26 @@ public class FXMLController {
 
     @FXML
     void doCalcola(ActionEvent event) {
-
+    	String word = fieldInsert.getText();
+    	List<String> out = this.model.getAnagrammi(word);
+    	String textCorretto = "";
+    	String textErrato = "";
+    	for (String s: out) {
+    		if (model.anagrammaCorretto(s)) {
+    			textCorretto += s + "\n";
+    		} else {
+    			textErrato += s + "\n";
+    		}
+    	}
+    	areaCorretti.setText(textCorretto);
+    	areaErrati.setText(textErrato);
     }
 
     @FXML
     void doReset(ActionEvent event) {
-
+    	fieldInsert.clear();
+    	areaCorretti.clear();
+    	areaErrati.clear();
     }
 
     @FXML
@@ -48,5 +67,9 @@ public class FXMLController {
         assert areaCorretti != null : "fx:id=\"areaCorretti\" was not injected: check your FXML file 'Scene.fxml'.";
         assert areaErrati != null : "fx:id=\"areaErrati\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Scene.fxml'.";
+    }
+    
+    public void setModel(Model in) {
+    	this.model = in;
     }
 }
